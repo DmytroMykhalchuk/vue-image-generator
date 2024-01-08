@@ -1,5 +1,6 @@
 <script lang="ts">
-import type { StorySavedType } from './Form.vue';
+import type { StorySavedType } from '../Layout/AsideForm.vue';
+
 
 export default {
     name: 'Display',
