@@ -12,11 +12,14 @@ export default {
 <template>
     <v-container>
         <v-row>
-            <v-col md="4">
+            <v-col md="3">
                 <slot name="form"></slot>
             </v-col>
-            <v-col md="8">
+            <v-col md="6">
                 <slot name="content"></slot>
+            </v-col>
+            <v-col md="3">
+                <slot name="info"></slot>
             </v-col>
         </v-row>
     </v-container>

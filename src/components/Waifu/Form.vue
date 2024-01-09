@@ -1,11 +1,12 @@
 <script lang="ts">
-import AsideForm, { type StorySavedType } from '../Layout/AsideForm.vue';
+import AsideForm from '../Layout/AsideForm.vue';
+import WaifuStory from './WaifuStory.vue';
 
 type WaifuType = 'SFW' | 'NSFW';
 
 export default {
     name: 'Form',
-    components: { AsideForm },
+    components: { AsideForm, WaifuStory },
     data() {
         return {
             type: 'SFW' as WaifuType,
@@ -39,19 +40,11 @@ export default {
             //@ts-ignore
             this.$store.dispatch('fetchWaifuImages', params);
         },
-        onRedirect(item: StorySavedType) {
-            //@ts-ignore
-            this.$store.dispatch('onStoryOpen', item);
-        }
     },
     computed: {
         waifuImage(): string {
             //@ts-ignore
             return this.$store.getters.getWaifuImage;
-        },
-        waifuStory(): StorySavedType[] {
-            //@ts-ignore
-            return this.$store.getters.getStoryWaifu;
         },
         waifuOpenedStory(): { type: WaifuType, category: string } {
             //@ts-ignore
@@ -76,7 +69,10 @@ export default {
 </script>
 
 <template>
-    <AsideForm :history='waifuStory' :onRedirect="onRedirect">
+    <AsideForm>
+        <template v-slot:history>
+            <WaifuStory />
+        </template>
         <template v-slot:form>
             <v-radio-group label="Type" v-model="type">
                 <v-radio label="SFW" value="SFW" color="brown"></v-radio>
@@ -98,5 +94,4 @@ export default {
 </template>
 
 
-<style lang="scss" scoped>
-</style>
+<style lang="scss" scoped></style>
