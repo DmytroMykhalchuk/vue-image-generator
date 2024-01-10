@@ -18,13 +18,15 @@ export default {
 </script>
 
 <template>
-    <v-sheet class="form-wrapper" elevation="2">
-        <slot name="form"></slot>
-    </v-sheet>
-    <v-sheet class="form-wrapper elevation-2">
-        <p>History</p>
-        <slot name='history'></slot>
-    </v-sheet>
+    <div style="width: 100%;">
+        <div class="form-wrapper elevation-4">
+            <slot name="form"></slot>
+        </div>
+        <div class="form-wrapper elevation-4">
+            <p>History</p>
+            <slot name='history'></slot>
+        </div>
+    </div>
 </template>
 
 
@@ -32,7 +34,6 @@ export default {
 @import './../../assets/styles/global.scss';
 
 .form-wrapper {
-    background-color: #fff;
     border-radius: 16px;
     padding: 16px;
     width: 100%;

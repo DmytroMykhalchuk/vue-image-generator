@@ -48,11 +48,6 @@ export default {
             //@ts-ignore
             this.$store.dispatch('fetchCatImage', {});
         },
-
-        // onRedirect(item: StorySavedType) {
-        //     //@ts-ignore
-        //     this.$store.dispatch('onStoryOpen', item);
-        // }
     },
     computed: {
         catImage(): string {
@@ -77,7 +72,6 @@ export default {
             this.isFetching = false;
         },
         filters(newValue: Filters) {
-            console.log(newValue)
             this.searchParams.tag = newValue.tag;
         },
     },
@@ -97,7 +91,7 @@ export default {
             </div>
             <div>
                 <v-switch :label="`See ${isOpenedPreviewStory ? 'less' : 'more'} tags`"
-                    v-model="searchParams.isOpenFullTags" color="brown"></v-switch>
+                    v-model="searchParams.isOpenFullTags" variant="underlined"></v-switch>
                 <template v-if="searchParams.isOpenFullTags" v-for="item in catTags.tags">
                     <v-chip class="ma-1" color="brown" :variant="searchParams.tag === item ? 'flat' : 'outlined'"
                         @click="onSelectTag(item)">{{ item }}</v-chip>
@@ -119,6 +113,7 @@ export default {
 .top-actions {
     display: flex;
     gap: 8px;
-    justify-content: end;
+    justify-content: space-between;
+    flex-wrap: wrap;
 }
 </style>

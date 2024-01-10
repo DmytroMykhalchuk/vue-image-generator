@@ -2,10 +2,11 @@
 import WrapperPage from '@/components/Layout/WrapperPage.vue';
 import Form from '@/components/Waifu/Form.vue';
 import Display from '@/components/Waifu/Display.vue';
+import Favourites from '@/components/Waifu/Favourites.vue';
 
 export default {
   name: 'WaifuView',
-  components: { WrapperPage, Form, Display },
+  components: { WrapperPage, Form, Display, Favourites },
   data() {
     return {};
   },
@@ -20,6 +21,9 @@ export default {
     </template>
     <template v-slot:content>
       <Display />
+    </template>
+    <template v-slot:info>
+      <Favourites />
     </template>
   </WrapperPage>
 </template>

@@ -55,13 +55,13 @@ export default {
             <div>
                 <div class="actions pa-3">
                     <v-btn icon="mdi-link" @click="onCopy" :disabled="isCopied"></v-btn>
-                    <a :href="catImage.url" target="_blank" download="waifu"><v-btn icon="mdi-download"
+                    <a :href="catImage.url" target="_blank" download="waifu" style="color:inherit;"><v-btn icon="mdi-download"
                             @click="onDonwload"></v-btn></a>
                     <v-btn icon="mdi-heart" @click="onSave"><v-icon
-                            :color="catIsSaved ? 'red' : 'black'"></v-icon></v-btn>
+                            :color="catIsSaved ? 'red' : ''"></v-icon></v-btn>
 
                 </div>
-                <img class="image elevation-2" ref="imageRef" :src="catImage.url" alt="" />
+                <img class="image elevation-4" ref="imageRef" :src="catImage.url" alt="" />
             </div>
         </template>
         <div class="d-flex justify-content" v-else>

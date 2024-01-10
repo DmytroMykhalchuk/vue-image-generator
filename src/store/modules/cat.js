@@ -1,6 +1,5 @@
 import axios from "axios";
 import { catTags } from "./constants";
-import { storeKey } from "vuex";
 
 const state = {
     catImage: {
@@ -17,7 +16,6 @@ const state = {
         tags: catTags,
         isError: false,
     }
-    // openedWaifuStory: null
 };
 
 const getters = {
@@ -43,7 +41,6 @@ const actions = {
                 const { _id: id, tags } = response.data;
 
                 const fullUrl = `https://cataas.com/cat/${id}`;
-                console.log(fullUrl)
 
                 commit('setCatImage', {
                     url: fullUrl,
@@ -82,7 +79,14 @@ const actions = {
             ? `/says/${text?.sentence}${text?.color ? `?fontColor=${text.color}` : '?'}${text?.size ? `&fontSize=${text.size}` : ''}`
             : '';
 
-        const url = `https://cataas.com/cat/${state.catImage.id}${textParams ? `${textParams}` : '?'}${filter ? `filter=${filter}` : ''}${type ? `type=${type}` : ''}`;
+        let filterParams = filter
+            ? 'filter=' + filter.type
+            : '';
+        if (filter.type === 'custom') {
+            filterParams += `&r=${filter.r}&g=${filter.g}&b=${filter.b}`
+        }
+
+        const url = `https://cataas.com/cat/${state.catImage.id}${textParams ? `${textParams}` : '?'}${filterParams}${type ? `type=${type}` : ''}`;
         commit('updateCatImage', url);
         commit('setFilterEditing', params);
     },
@@ -164,12 +168,6 @@ const mutations = {
     setStoryCat(state, story) {
         state.storyCat = story;
     },
-    // saveWaifuFilter(state, filter) {
-    //     state.waifuFilter = filter;
-    // },
-    // setWaifuStory(state, story) {
-    //     state.openedWaifuStory = story;
-    // }
 };
 
 export default {

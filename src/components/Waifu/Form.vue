@@ -1,6 +1,7 @@
 <script lang="ts">
 import AsideForm from '../Layout/AsideForm.vue';
 import WaifuStory from './WaifuStory.vue';
+const waifuStorageKey = 'nswf_extended';
 
 type WaifuType = 'SFW' | 'NSFW';
 
@@ -22,7 +23,19 @@ export default {
             },
             isFetching: false,
             isOpenedPreviewStory: false,
+            isExtendedVersion: false,
         };
+    },
+    mounted() {
+        if (localStorage.getItem(waifuStorageKey)) {
+            this.isExtendedVersion = true;
+        } else {
+            const { searchParams } = new URL(window.location.href);
+            if (searchParams.get('nsfw')) {
+                localStorage.setItem(waifuStorageKey, '1');
+                this.isExtendedVersion = true;
+            }
+        }
     },
     methods: {
         onSelectSFW(category: string) {
@@ -76,7 +89,7 @@ export default {
         <template v-slot:form>
             <v-radio-group label="Type" v-model="type">
                 <v-radio label="SFW" value="SFW" color="brown"></v-radio>
-                <v-radio label="NSFW" value="NSFW" color="brown"></v-radio>
+                <v-radio label="NSFW" value="NSFW" color="brown" :disabled="!isExtendedVersion"></v-radio>
             </v-radio-group>
             <template v-if="type === 'SFW'" v-for="item in sfwCategories">
                 <v-chip class="ma-1" color="brown" :variant="item === selected.SFW ? 'flat' : 'outlined'"
