@@ -1,0 +1,38 @@
+{
+    "menu_home": "Home",
+    "menu_cat": "Cat",
+    "menu_waifu": "Waifu",
+    "home_disclaimer": {
+        "title": "Disclaimer",
+        "content": "The developer of this site is not responsible for the content of the created images. They are generated automatically and can contain a variety of material.\nThe user should be aware that the images created by this generator may contain pornographic content. The developer is not responsible for any misunderstandings or negative consequences related to such content.\nUse of this generator must comply with all applicable laws and regulations. The developer is not responsible for the illegal use of generated images.\nUse this service at your own discretion and be aware of possible risks.",
+        "confirmation": "I confirm that I am informed"
+    },
+    "history": "History",
+    "history_remark": "{count} of recent requests is displayed",
+    "preview_on": "Turn on preview",
+    "preview_off": "Turn off preview",
+    "no_image": "No image",
+    "not_found_image": "Not found image",
+    "generate": "Generate",
+    "regenerate": "Regenerate",
+    "edit": "Edit",
+    "find": "Find",
+    "random": "Random",
+    "choosed": "Favorites",
+    "editing": {
+        "red": "Red",
+        "green": "Green",
+        "blue": "Blue",
+        "customization": "Customization",
+        "type":"Type",
+        "category":"Category",
+        "text":"Text",
+        "font_size":"Font size",
+        "color":"Color",
+        "filter":"Filter"
+    },
+    "title_generate_photo":"Generate photo",
+    "language":"Language",
+    "": ""
+
+}

@@ -53,14 +53,13 @@ export default {
                     <v-btn icon="mdi-link" @click="onCopy" :disabled="isCopied"></v-btn>
                     <a :href="waifuImage" target="_blank" download="waifu" style="color:inherit;"><v-btn icon="mdi-download"
                             @click="onDonwload"></v-btn></a>
-                    <v-btn icon="mdi-heart" @click="onSave"><v-icon
-                            :color="waifuIsSaved ? 'red' : ''"></v-icon></v-btn>
+                    <v-btn icon="mdi-heart" @click="onSave"><v-icon :color="waifuIsSaved ? 'red' : ''"></v-icon></v-btn>
                 </div>
                 <img class="image elevation-4" ref="imageRef" :src="waifuImage" alt="" />
             </div>
         </template>
         <div class="d-flex justify-content" v-else>
-            <p class="text-h6 text-center" style="width: 100%;">No image</p>
+            <p class="text-h6 text-center" style="width: 100%;">{{ $t('no_image') }}</p>
         </div>
 
     </div>

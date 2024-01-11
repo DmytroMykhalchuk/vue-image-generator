@@ -36,7 +36,7 @@ export default {
 
 <template>
     <div>
-        <v-switch :label="`Turn ${isOpenedPreviewStory ? 'off' : 'on'} preview`" v-model="isOpenedPreviewStory"
+        <v-switch :label="$t(`${isOpenedPreviewStory ? 'preview_off' : 'preview_on'}`)" v-model="isOpenedPreviewStory"
             color="brown"></v-switch>
         <div class="story">
             <template v-for="item in history">
@@ -44,8 +44,8 @@ export default {
                     width="100%" @click="onRedirect(item)" v-ripple>
                     <div style="width: 100%;">
                         <div class="secondary text-caption d-flex justify-space-between" style="gap:1em;">
-                            <p>Type: <strong>{{ item.type }}</strong></p>
-                            <p>Category: <strong>{{ item.category }}</strong></p>
+                            <p>{{ $t('editing.type') }}: <strong>{{ item.type }}</strong></p>
+                            <p>{{ $t('editing.category') }}: <strong>{{ item.category }}</strong></p>
                         </div>
                         <div class="d-flex">
                             <template v-if="isOpenedPreviewStory">

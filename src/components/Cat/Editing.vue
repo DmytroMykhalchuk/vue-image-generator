@@ -1,4 +1,5 @@
 <script lang="ts">
+//@ts-ignore
 import { catTypes, catFilter, basicColors } from './../../store/modules/constants';
 export type CatType = 'square' | 'medium' | 'small' | 'xsmall' | '';
 
@@ -94,44 +95,45 @@ export default {
 
 <template>
     <div class="elevation-4 wrapper">
-        <v-radio-group label="Type" v-model="imageParams.type">
+        <v-radio-group :label="$t('editing.type')" v-model="imageParams.type">
             <v-radio label="Default" :value="''" color="brown"></v-radio>
             <template v-for="item in catTypes">
                 <v-radio :label="item[0].toUpperCase() + item.slice(1)" :value="item" color="brown"></v-radio>
             </template>
         </v-radio-group>
-        <v-radio-group label="Filter" v-model="imageParams.filter.type">
+        <v-radio-group :label="$t('editing.filter')" v-model="imageParams.filter.type">
             <v-radio label="Default" :value="''" color="brown"></v-radio>
             <template v-for="item in catFilter">
                 <v-radio :label="item[0].toUpperCase() + item.slice(1)" :value="item" color="brown"></v-radio>
             </template>
         </v-radio-group>
         <div v-if="imageParams.filter.type === 'custom'">
-            Customization
-            <div class="text-caption">Red</div>
+            {{ $t('edititng.customization') }}
+            <div class="text-caption">{{ $t('edititng.red') }}</div>
             <v-slider v-model="imageParams.filter.r" color="red" :min="0" :max="256" :step="1" thumb-label></v-slider>
-            <div class="text-caption">Green</div>
+            <div class="text-caption">{{ $t('edititng.green') }}</div>
             <v-slider v-model="imageParams.filter.g" color="green" :min="0" :max="256" :step="1" thumb-label></v-slider>
-            <div class="text-caption">blue</div>
+            <div class="text-caption">{{ $t('edititng.blue') }}</div>
             <v-slider v-model="imageParams.filter.b" color="blue" :min="0" :max="256" :step="1" thumb-label></v-slider>
         </div>
         <div>
-            <p class="text-body1">Text</p>
-            <v-text-field label="Text" variant="underlined" v-model="imageParams.text.sentence"></v-text-field>
+            <p class="text-body1">{{ $t('editing.text') }}</p>
+            <v-text-field :label="$t('editing.text')" variant="underlined"
+                v-model="imageParams.text.sentence"></v-text-field>
             <div class="text-options">
-                <v-select label="Color" v-model="imageParams.text.color" size="small" variant="underlined"
+                <v-select :label="$t('editing.color')" v-model="imageParams.text.color" variant="underlined"
                     :items="basicColors"></v-select>
-                <v-select label="Font size" v-model="imageParams.text.size" size="small" variant="underlined"
-                    :items="[10, 12, 14, 16, 18, 20, 22, 24, 26]"></v-select>
+                <v-select :label="$t('editing.font_size')" v-model="imageParams.text.size" variant="underlined"
+                    :items="[10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 34, 38, 42, 46, 50, 54]"></v-select>
             </div>
         </div>
         <div class="btn-wrapper">
-            <v-btn @click="onEdit" color="brown">Edit</v-btn>
+            <v-btn @click="onEdit" color="brown">{{ $t('edit') }}</v-btn>
         </div>
     </div>
     <div class="elevation-4 wrapper">
-        <p class="text-body1">Favourite</p>
-        <v-switch :label="`Turn ${isOpenedPreviews ? 'off' : 'on'} preview`" v-model="isOpenedPreviews"
+        <p class="text-body1">{{ $t('choosed') }}</p>
+        <v-switch :label="$t(`${isOpenedPreviews ? 'preview_off' : 'preview_on'}`)" v-model="isOpenedPreviews"
             color="brown"></v-switch>
         <template v-for="item in savedCats">
             <button :class="`btn ${catImage?.url === item.url && 'active'}`" v-ripple @click="onSelectFavourite(item)"
@@ -150,6 +152,7 @@ export default {
 .wrapper {
     border-radius: 16px;
     padding: 16px;
+    margin-bottom: 16px;
 }
 
 .btn-wrapper {

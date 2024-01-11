@@ -55,10 +55,9 @@ export default {
             <div>
                 <div class="actions pa-3">
                     <v-btn icon="mdi-link" @click="onCopy" :disabled="isCopied"></v-btn>
-                    <a :href="catImage.url" target="_blank" download="waifu" style="color:inherit;"><v-btn icon="mdi-download"
-                            @click="onDonwload"></v-btn></a>
-                    <v-btn icon="mdi-heart" @click="onSave"><v-icon
-                            :color="catIsSaved ? 'red' : ''"></v-icon></v-btn>
+                    <a :href="catImage.url" target="_blank" download="waifu" style="color:inherit;"><v-btn
+                            icon="mdi-download" @click="onDonwload"></v-btn></a>
+                    <v-btn icon="mdi-heart" @click="onSave"><v-icon :color="catIsSaved ? 'red' : ''"></v-icon></v-btn>
 
                 </div>
                 <img class="image elevation-4" ref="imageRef" :src="catImage.url" alt="" />
@@ -67,10 +66,10 @@ export default {
         <div class="d-flex justify-content" v-else>
             <p class="text-h6 text-center" style="width: 100%;">
                 <template v-if="catImage.isNotFound">
-                    Not found
+                    {{ $t('not_found_image') }}
                 </template>
                 <template v-else>
-                    No image
+                    {{ $t('no_image') }}
                 </template>
             </p>
         </div>

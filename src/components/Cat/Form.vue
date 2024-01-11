@@ -86,8 +86,8 @@ export default {
         </template>
         <template v-slot:form>
             <div class="top-actions">
-                <v-btn @click="onRandomize">Random</v-btn>
-                <v-btn @click="onSearch">Regenerate</v-btn>
+                <v-btn @click="onRandomize">{{ $t('random') }}</v-btn>
+                <v-btn @click="onSearch">{{ $t('regenerate') }}</v-btn>
             </div>
             <div>
                 <v-switch :label="`See ${isOpenedPreviewStory ? 'less' : 'more'} tags`"
@@ -98,11 +98,12 @@ export default {
                 </template>
 
                 <template v-else>
-                    <v-select label="Tag" chips closableChips v-model="searchParams.tag" :items="catTags.tags"></v-select>
+                    <v-select label="Tag" chips closableChips v-model="searchParams.tag" variant="underlined"
+                        :items="catTags.tags"></v-select>
                 </template>
             </div>
             <div class="d-flex justify-center align-center pt-5">
-                <v-btn color="brown" :loading="isFetching" @click="onSearch">Find</v-btn>
+                <v-btn color="brown" :loading="isFetching" @click="onSearch">{{ $t('find') }}</v-btn>
             </div>
         </template>
     </AsideForm>

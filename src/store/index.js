@@ -1,7 +1,8 @@
 import { createStore } from "vuex";
-import App from './modules/app';
+import Waifu from './modules/waifu';
 import Cat from './modules/cat';
+import App from './modules/app';
 
 export default createStore({
-    modules: { App, Cat },
+    modules: { Waifu, Cat, App },
 });

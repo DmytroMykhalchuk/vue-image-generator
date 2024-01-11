@@ -8,17 +8,17 @@ export default {
         return {
             menuList: [
                 {
-                    title: 'Home',
+                    title: this.$t('menu_home'),
                     url: '/',
                     icon: 'mdi-home',
                 },
                 {
-                    title: 'Cat',
+                    title: this.$t('menu_cat'),
                     url: '/cat',
                     icon: 'mdi-cat',
                 },
                 {
-                    title: 'Waifu',
+                    title: this.$t('menu_waifu'),
                     url: '/waifu',
                     icon: 'mdi-account-cowboy-hat-outline',
                 },
@@ -31,16 +31,25 @@ export default {
             this.$router.push(path);
         },
         isActive(path: string) {
+            if (!this.isConfirmedRights) {
+                return false;
+            }
             return this.$router.currentRoute.value.fullPath === path;
         },
     },
+    computed: {
+        isConfirmedRights(): boolean {
+            //@ts-ignore
+            return this.$store.getters.getIsConfirmedRights;
+        }
+    }
 
 }
 </script>
 
 <template>
     <div class="mobile-element">
-        <v-app-bar :elevation="1" title="Generate photo" class="app-bar" color="#efab70">
+        <v-app-bar :elevation="1" :title="$t('title_generate_photo')" class="app-bar" color="#efab70">
             <template v-slot:prepend>
                 <v-app-bar-nav-icon id="menu-activator"></v-app-bar-nav-icon>
                 <v-menu activator="#menu-activator">
@@ -68,7 +77,7 @@ export default {
         <template v-for="item in menuList">
             <div class="side-menu__item mb-3">
                 <v-btn class="side-menu__btn" variant="text" :color="isActive(item.url) ? 'white' : '#a52a2a'"
-                    @click="onRedirect(item.url)">
+                    @click="onRedirect(item.url)" :disabled="!isConfirmedRights">
                     <div class="d-flex flex-column">
                         <p class="text-h4">
                             <v-icon :icon="item.icon"></v-icon>

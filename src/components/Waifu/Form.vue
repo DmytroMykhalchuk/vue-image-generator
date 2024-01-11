@@ -87,7 +87,7 @@ export default {
             <WaifuStory />
         </template>
         <template v-slot:form>
-            <v-radio-group label="Type" v-model="type">
+            <v-radio-group :label="$t('editing.type')" v-model="type">
                 <v-radio label="SFW" value="SFW" color="brown"></v-radio>
                 <v-radio label="NSFW" value="NSFW" color="brown" :disabled="!isExtendedVersion"></v-radio>
             </v-radio-group>
@@ -100,7 +100,7 @@ export default {
                     @click="onSelectNSFW(item)">{{ item }}</v-chip>
             </template>
             <div class="d-flex justify-center align-center pt-5">
-                <v-btn color="brown" :loading="isFetching" @click="onSearch">Find</v-btn>
+                <v-btn color="brown" :loading="isFetching" @click="onSearch">{{ $t('find') }}</v-btn>
             </div>
         </template>
     </AsideForm>

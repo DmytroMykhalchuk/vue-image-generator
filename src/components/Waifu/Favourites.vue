@@ -29,7 +29,7 @@ export default {
 
 <template>
     <div class="wrapper elevation-4">
-        <v-switch :label="`Turn ${isOpenedPreviews ? 'off' : 'on'} preview`" v-model="isOpenedPreviews"
+        <v-switch :label="$t(`${isOpenedPreviews ? 'preview_off' : 'preview_on'}`)" v-model="isOpenedPreviews"
             color="brown"></v-switch>
         <template v-for="item in savedWaifus">
             <button :class="`btn ${waifuImage === item.url && 'active'}`" v-ripple @click="onSelectFavourite(item)" :disabled="waifuImage === item.url">

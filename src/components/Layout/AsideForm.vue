@@ -23,8 +23,11 @@ export default {
             <slot name="form"></slot>
         </div>
         <div class="form-wrapper elevation-4">
-            <p>History</p>
+            <p>{{ $t('history') }}</p>
             <slot name='history'></slot>
+            <p class="text-caption">
+                {{ $t('history_remark', { count: 20 }) }}
+            </p>
         </div>
     </div>
 </template>

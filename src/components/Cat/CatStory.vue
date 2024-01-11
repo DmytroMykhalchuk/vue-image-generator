@@ -23,7 +23,7 @@ export default {
             //@ts-ignore
             return this.$store.getters.getStoryCat;
         },
-        catImage(): {id:string} {
+        catImage(): { id: string } {
             //@ts-ignore
             return this.$store.getters.getCatImage;
         },
@@ -34,10 +34,11 @@ export default {
 
 <template>
     <div>
-        <v-switch :label="`Turn ${isOpenedPreviews ? 'off' : 'on'} preview`" v-model="isOpenedPreviews"
+        <v-switch :label="$t(`${isOpenedPreviews ? 'preview_off' : 'preview_on'}`)" v-model="isOpenedPreviews"
             color="brown"></v-switch>
         <template v-for="item in history">
-            <button v-ripple @click="onRedirect(item)" :class="`history__item ${catImage?.id === item.id && 'active'}`" :disabled="catImage?.id === item.id">
+            <button v-ripple @click="onRedirect(item)" :class="`history__item ${catImage?.id === item.id && 'active'}`"
+                :disabled="catImage?.id === item.id">
                 <div class="text-body2">
                     ID: <strong>{{ item.id }}</strong>
                     <div class="preview-wrapper">
