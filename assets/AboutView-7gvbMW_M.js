@@ -1,1 +1,0 @@
-import{_ as t,c as o,a as s,w as a,b as n,r as c,o as _,d as r}from"./index-PXdvfzBF.js";const d={},l={class:"about"},i=n("h1",null,"This is an about page",-1);function u(f,p){const e=c("v-btn");return _(),o("div",l,[i,s(e,null,{default:a(()=>[r("df")]),_:1})])}const h=t(d,[["render",u]]);export{h as default};
